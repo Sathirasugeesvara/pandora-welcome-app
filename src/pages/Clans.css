@@ -1,0 +1,503 @@
+/* ══════════════════════════════════
+   CLANS PAGE — Six Clans of Pandora
+   ══════════════════════════════════ */
+
+.clans {
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 0 80px;
+  overflow: hidden;
+  background: #020b18;
+}
+
+/* ── Background ── */
+.clans__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.clans__bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.09;
+}
+
+.clans__bg-orb--1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, #39ff14, transparent 70%);
+  top: -200px; left: -200px;
+  animation: cOrbDrift 18s ease-in-out infinite alternate;
+}
+
+.clans__bg-orb--2 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #7c3aed, transparent 70%);
+  bottom: -100px; right: -100px;
+  animation: cOrbDrift 22s ease-in-out infinite alternate-reverse;
+}
+
+.clans__bg-orb--3 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #00e5ff, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: cOrbDrift 14s ease-in-out infinite alternate;
+  opacity: 0.05;
+}
+
+@keyframes cOrbDrift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(60px, 40px); }
+}
+
+.clans__bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.02) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* ── Container ── */
+.clans__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── Header ── */
+.clans__header {
+  text-align: center;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.clans__eyebrow {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #00e5ff;
+  opacity: 0.7;
+}
+
+.clans__title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(36px, 8vw, 64px);
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #e0f7ff 0%, #00e5ff 40%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin: 0;
+}
+
+.clans__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.clans__divider span:not(.clans__diamond) { flex: 1; height: 1px; }
+.clans__divider span:first-child { background: linear-gradient(90deg, transparent, rgba(0,229,255,0.5)); }
+.clans__divider span:last-child  { background: linear-gradient(90deg, rgba(0,229,255,0.5), transparent); }
+
+.clans__diamond {
+  width: 8px; height: 8px;
+  background: #00e5ff;
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px #00e5ff;
+  flex-shrink: 0 !important;
+}
+
+.clans__subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(13px, 2.5vw, 16px);
+  letter-spacing: 1.5px;
+  color: #7ecfdf;
+  line-height: 1.8;
+  opacity: 0.8;
+  text-align: center;
+}
+
+/* ── Grid ── */
+.clans__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+/* ── Clan Card ── */
+.clan-card {
+  position: relative;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 28px 22px 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  animation: cardIn 0.5s ease both;
+  overflow: hidden;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Animated border on hover/active */
+.clan-card__border {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--c);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  box-shadow: inset 0 0 20px var(--cdim);
+}
+
+.clan-card:hover .clan-card__border,
+.clan-card--active .clan-card__border {
+  opacity: 1;
+}
+
+.clan-card:hover,
+.clan-card--active {
+  background: var(--cdim);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px var(--cglow), 0 0 0 1px var(--c);
+}
+
+/* Corner accents */
+.clan-card::before,
+.clan-card::after {
+  content: '';
+  position: absolute;
+  width: 14px; height: 14px;
+  border-color: var(--c);
+  border-style: solid;
+  opacity: 0.5;
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+.clan-card::before { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
+.clan-card::after  { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; }
+
+.clan-card:hover::before,
+.clan-card:hover::after,
+.clan-card--active::before,
+.clan-card--active::after {
+  opacity: 1;
+  width: 20px; height: 20px;
+}
+
+/* ── Top section ── */
+.clan-card__top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+/* Image */
+.clan-card__img-wrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+}
+
+.clan-card__img-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--c);
+  opacity: 0.4;
+  animation: ringPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes ringPulse {
+  from { transform: scale(1);   opacity: 0.3; }
+  to   { transform: scale(1.08); opacity: 0.7; }
+}
+
+.clan-card--active .clan-card__img-ring,
+.clan-card:hover .clan-card__img-ring {
+  border-color: var(--c);
+  box-shadow: 0 0 14px var(--cglow);
+}
+
+.clan-card__img {
+  width: 72px; height: 72px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 8px var(--cglow));
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.clan-card:hover .clan-card__img,
+.clan-card--active .clan-card__img {
+  filter: drop-shadow(0 0 16px var(--cglow)) drop-shadow(0 0 28px var(--cglow));
+  transform: scale(1.08);
+}
+
+.clan-card__img-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, var(--cmid) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.clan-card:hover .clan-card__img-glow,
+.clan-card--active .clan-card__img-glow {
+  opacity: 1;
+}
+
+/* Name block */
+.clan-card__name-block {
+  flex: 1;
+  min-width: 0;
+}
+
+.clan-card__title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c);
+  opacity: 0.7;
+  margin-bottom: 3px;
+}
+
+.clan-card__name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #e0f7ff;
+  margin: 0 0 5px;
+  line-height: 1;
+}
+
+.clan-card__motto {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--c);
+  opacity: 0.75;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+/* ── Pills ── */
+.clan-card__pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.clan-card__pill {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c);
+  padding: 4px 10px;
+  border: 1px solid var(--cmid);
+  background: var(--cdim);
+  white-space: nowrap;
+}
+
+/* ── Power bar ── */
+.clan-card__power {
+  margin-bottom: 0;
+}
+
+.clan-card__power-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7ecfdf;
+  opacity: 0.6;
+  margin-bottom: 5px;
+}
+
+.clan-card__power-num {
+  color: var(--c);
+  opacity: 1;
+  font-weight: 700;
+}
+
+.clan-card__power-track {
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.clan-card__power-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 50%, transparent));
+  box-shadow: 0 0 8px var(--cglow);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Expand panel ── */
+.clan-card__expand {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s ease;
+  overflow: hidden;
+}
+
+.clan-card__expand--open {
+  grid-template-rows: 1fr;
+}
+
+.clan-card__expand-inner {
+  overflow: hidden;
+}
+
+.clan-card__sep {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cmid), transparent);
+  margin: 16px 0;
+}
+
+.clan-card__desc {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  color: #b0d8e8;
+  line-height: 1.75;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.clan-card__territory {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.clan-card__territory-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #7ecfdf;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.clan-card__territory-val {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--c);
+  opacity: 0.85;
+}
+
+/* Traits */
+.clan-card__traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.clan-card__trait {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #020b18;
+  background: var(--c);
+  padding: 3px 10px;
+  clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);
+  opacity: 0.85;
+}
+
+/* ── Tap hint ── */
+.clan-card__hint {
+  margin-top: 14px;
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c);
+  opacity: 0.45;
+  transition: opacity 0.3s;
+}
+
+.clan-card:hover .clan-card__hint {
+  opacity: 0.75;
+}
+
+/* ── Footer line ── */
+.clans__footer-line {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+}
+
+.clans__footer-line span {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.3));
+}
+
+.clans__footer-line span:last-child {
+  background: linear-gradient(90deg, rgba(0,229,255,0.3), transparent);
+}
+
+.clans__footer-line p {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #7ecfdf;
+  opacity: 0.5;
+  text-align: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .clans__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .clans__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .clan-card__top { gap: 14px; }
+  .clan-card { padding: 22px 18px 14px; }
+}

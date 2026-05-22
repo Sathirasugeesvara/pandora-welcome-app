@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Gallery from "./pages/Gallery";
 import Leaderboard from "./pages/Leaderboard";
+import Clans from "./pages/Clans";
+import About from "./pages/About";
 import "./App.css";
 
 // ── Page placeholders (replace with real pages as you build them) ──
@@ -55,8 +57,8 @@ const PAGES = {
   invitation:  ()      => <ComingSoonPage label="Invitation" />,
   leaderboard: ()      => <Leaderboard />,
   gallery:     ()      => <Gallery />,
-  about:       ()      => <ComingSoonPage label="About" />,
-  clans:       ()      => <ComingSoonPage label="Clans" />,
+  about:       ()      => <About />,
+  clans:       ()      => <Clans />,
 };
 
 export default function App() {

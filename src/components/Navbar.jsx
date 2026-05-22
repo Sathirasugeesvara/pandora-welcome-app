@@ -5,9 +5,9 @@ const NAV_LINKS = [
   { label: "Home",        page: "home" },
   { label: "Invitation",  page: "invitation" },
   { label: "Leaderboard", page: "leaderboard" },
+  { label: "Clans",       page: "clans" },
   { label: "Gallery",     page: "gallery" },
   { label: "About",       page: "about" },
-  { label: "Clans",       page: "clans" },
 ];
 
 export default function Navbar({ currentPage, onNavigate }) {

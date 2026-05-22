@@ -1,0 +1,808 @@
+/* ══════════════════════════════
+   ABOUT PAGE — Pandora Event
+   ══════════════════════════════ */
+
+.about {
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 0 80px;
+  overflow: hidden;
+  background: #020b18;
+}
+
+/* ── Background ── */
+.about__bg {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden;
+}
+
+.about__bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.08;
+}
+
+.about__bg-orb--1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, #00e5ff, transparent 70%);
+  top: -200px; left: -200px;
+  animation: aOrbDrift 18s ease-in-out infinite alternate;
+}
+
+.about__bg-orb--2 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #7c3aed, transparent 70%);
+  bottom: -100px; right: -100px;
+  animation: aOrbDrift 22s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes aOrbDrift {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(60px, 40px); }
+}
+
+.about__bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.02) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+
+/* ── Container ── */
+.about__container {
+  position: relative; z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* ── Hero ── */
+.about__hero {
+  text-align: center;
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.about__hero-eyebrow {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #7ecfdf;
+  opacity: 0.7;
+}
+
+.about__hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+}
+
+.about__hero-pmt {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(22px, 5vw, 36px);
+  font-weight: 700;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #00e5ff, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about__hero-presents {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #7ecfdf;
+  opacity: 0.6;
+}
+
+.about__hero-pandora {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(52px, 14vw, 100px);
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #00e5ff 0%, #22d3ee 40%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 0.95;
+  filter: drop-shadow(0 0 40px rgba(0,229,255,0.25));
+}
+
+.about__hero-sub {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(12px, 2.5vw, 16px);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #e0f7ff;
+  opacity: 0.6;
+}
+
+.about__hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: 8px;
+}
+
+/* ── Shared diamond + divider ── */
+.about__diamond {
+  width: 8px; height: 8px;
+  background: #00e5ff;
+  transform: rotate(45deg);
+  box-shadow: 0 0 10px #00e5ff;
+  flex-shrink: 0 !important;
+}
+
+.about__hero-divider span:not(.about__diamond),
+.about__footer-divider span:not(.about__diamond) {
+  flex: 1; height: 1px;
+}
+
+.about__hero-divider span:first-child,
+.about__footer-divider span:first-child {
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.5));
+}
+
+.about__hero-divider span:last-child,
+.about__footer-divider span:last-child {
+  background: linear-gradient(90deg, rgba(0,229,255,0.5), transparent);
+}
+
+/* ── Section wrapper ── */
+.about__section {
+  margin-bottom: 56px;
+}
+
+.about__section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #00e5ff;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.about__section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,229,255,0.15), transparent);
+}
+
+.about__section-label span:last-child.about__section-line {
+  background: linear-gradient(90deg, transparent, rgba(0,229,255,0.15));
+}
+
+/* ── Event card ── */
+.about__event-card {
+  position: relative;
+  padding: 36px 32px;
+  background: rgba(0,229,255,0.02);
+  border: 1px solid rgba(0,229,255,0.12);
+  border-left: 3px solid #00e5ff;
+  overflow: hidden;
+}
+
+.about__event-card-glow {
+  position: absolute;
+  top: -60px; left: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(0,229,255,0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.about__event-icon {
+  font-size: 20px;
+  color: #00e5ff;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 8px #00e5ff);
+}
+
+.about__event-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #e0f7ff;
+  margin: 0 0 18px;
+}
+
+.about__event-body {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  color: #b0d8e8;
+  line-height: 1.85;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.about__event-body strong {
+  color: #00e5ff;
+  font-weight: 700;
+}
+
+.about__event-quote {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(14px, 3vw, 18px);
+  letter-spacing: 2px;
+  color: #e0f7ff;
+  text-align: center;
+  padding: 20px 0 4px;
+  border-top: 1px solid rgba(0,229,255,0.1);
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+.about__event-quote-mark {
+  color: #00e5ff;
+  font-size: 1.4em;
+  line-height: 0;
+  vertical-align: -0.2em;
+  margin: 0 6px;
+  opacity: 0.7;
+}
+
+/* ── Details grid ── */
+.about__details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.about__detail-card {
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 1px solid rgba(255,255,255,0.07);
+  animation: detailIn 0.4s ease both;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+@keyframes detailIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.about__detail-card--ready {
+  background: rgba(0,229,255,0.03);
+  border-color: rgba(0,229,255,0.15);
+}
+
+.about__detail-card--ready:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,229,255,0.15);
+}
+
+.about__detail-card--soon {
+  background: rgba(255,255,255,0.01);
+  border-color: rgba(255,255,255,0.05);
+  opacity: 0.7;
+}
+
+.about__detail-icon {
+  font-size: 22px;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(0,229,255,0.4));
+}
+
+.about__detail-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #7ecfdf;
+  opacity: 0.6;
+}
+
+.about__detail-value {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(13px, 2vw, 16px);
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #e0f7ff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.about__detail-badge {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #020b18;
+  background: #7ecfdf;
+  padding: 2px 7px;
+  opacity: 0.7;
+}
+
+/* ── Dress code card ── */
+.about__dress-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  padding: 36px 32px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+}
+
+.about__dress-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,0.3));
+}
+
+.about__dress-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #e0f7ff;
+  margin: 0 0 14px;
+}
+
+.about__dress-desc {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #b0d8e8;
+  line-height: 1.8;
+  margin-bottom: 18px;
+  opacity: 0.85;
+  max-width: 480px;
+}
+
+.about__dress-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about__dress-tags span {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e0f7ff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 5px 12px;
+  background: rgba(255,255,255,0.04);
+}
+
+/* Right decorative */
+.about__dress-right {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about__dress-orb {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: radial-gradient(circle, rgba(255,255,255,0.06), transparent 70%);
+  animation: dressOrb 4s ease-in-out infinite alternate;
+}
+
+@keyframes dressOrb {
+  from { transform: scale(1);   opacity: 0.6; }
+  to   { transform: scale(1.1); opacity: 1; }
+}
+
+.about__dress-text {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: rgba(255,255,255,0.15);
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Organiser card ── */
+.about__organiser-card {
+  display: flex;
+  gap: 28px;
+  padding: 36px 32px;
+  background: rgba(0,229,255,0.02);
+  border: 1px solid rgba(0,229,255,0.12);
+  position: relative;
+  overflow: hidden;
+  align-items: flex-start;
+}
+
+.about__organiser-glow {
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(0,229,255,0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.about__organiser-logo {
+  flex-shrink: 0;
+  width: 90px; height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0,229,255,0.2);
+  background: rgba(0,229,255,0.04);
+  padding: 10px;
+}
+
+.about__organiser-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(0,229,255,0.5));
+}
+
+.about__organiser-info { flex: 1; }
+
+.about__organiser-name {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #00e5ff, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 8px;
+}
+
+.about__organiser-sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #7ecfdf;
+  opacity: 0.65;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.about__organiser-desc {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  color: #b0d8e8;
+  line-height: 1.85;
+  margin-bottom: 16px;
+  opacity: 0.88;
+}
+
+.about__organiser-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about__organiser-tags span {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #00e5ff, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Team grid ── */
+.about__team-note {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #7ecfdf;
+  opacity: 0.6;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about__team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.about__team-card {
+  padding: 22px 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: detailIn 0.4s ease both;
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.about__team-card:hover {
+  border-color: rgba(0,229,255,0.25);
+  background: rgba(0,229,255,0.03);
+  transform: translateY(-3px);
+}
+
+.about__team-icon {
+  font-size: 20px;
+  color: #00e5ff;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 6px rgba(0,229,255,0.4));
+}
+
+.about__team-role {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #00e5ff;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.about__team-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #7ecfdf;
+  opacity: 0.5;
+  font-style: italic;
+}
+
+/* ── Venue card ── */
+.about__venue-card {
+  padding: 32px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.about__venue-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.about__venue-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(0,229,255,0.4));
+}
+
+.about__venue-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #e0f7ff;
+  margin: 0 0 8px;
+}
+
+.about__venue-sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #7ecfdf;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+/* Map */
+.about__map-wrap {
+  width: 100%;
+  height: 320px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0,229,255,0.1);
+}
+
+.about__map-iframe {
+  width: 100%; height: 100%;
+  border: none;
+  filter: invert(1) hue-rotate(180deg) saturate(0.6);
+  opacity: 0.85;
+}
+
+.about__map-placeholder {
+  width: 100%; height: 100%;
+  background: rgba(0,229,255,0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about__map-placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.about__map-pin {
+  font-size: 40px;
+  animation: pinBounce 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(0,229,255,0.4));
+}
+
+@keyframes pinBounce {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.about__map-tba {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  letter-spacing: 3px;
+  color: #7ecfdf;
+  opacity: 0.7;
+}
+
+.about__map-hint {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #7ecfdf;
+  opacity: 0.4;
+  margin-top: 8px;
+}
+
+.about__map-code {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: #00e5ff;
+  opacity: 0.35;
+  background: rgba(0,229,255,0.05);
+  padding: 6px 12px;
+  border: 1px solid rgba(0,229,255,0.1);
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.about__map-scan {
+  position: absolute;
+  top: -100%; left: 0; right: 0;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(0,229,255,0.04) 50%, transparent);
+  animation: mapScan 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes mapScan {
+  0%   { top: -100%; }
+  100% { top: 100%; }
+}
+
+.about__venue-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.about__venue-tags span {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7ecfdf;
+  opacity: 0.5;
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 5px 12px;
+}
+
+/* ── Footer ── */
+.about__footer-line {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.about__footer-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.about__footer-text {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(13px, 2.5vw, 17px);
+  letter-spacing: 3px;
+  color: #e0f7ff;
+  opacity: 0.6;
+}
+
+.about__footer-hash {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, #00e5ff, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.7;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .about__details-grid  { grid-template-columns: repeat(2, 1fr); }
+  .about__team-grid     { grid-template-columns: repeat(2, 1fr); }
+  .about__dress-card    { grid-template-columns: 1fr; }
+  .about__dress-right   { display: none; }
+  .about__organiser-card { flex-direction: column; align-items: center; text-align: center; }
+  .about__organiser-tags { justify-content: center; }
+  .about__event-card    { padding: 24px 20px; }
+  .about__venue-card    { padding: 22px 18px; }
+}
+
+@media (max-width: 440px) {
+  .about__details-grid { grid-template-columns: 1fr; }
+  .about__team-grid    { grid-template-columns: 1fr; }
+  .about__map-wrap     { height: 240px; }
+}
+
+.about__team-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.2);
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.about__team-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.3s ease;
+}
+
+.about__team-card:hover .about__team-photo {
+  transform: scale(1.08);
+}

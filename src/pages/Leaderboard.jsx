@@ -1,15 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Leaderboard.css";
 
-// ─────────────────────────────────────────────────────────────────
-// GOOGLE SHEETS SETUP
-// 1. Create a Google Form with 2 fields:
-//    - "Clan Name" (dropdown with exact clan names below)
-//    - "Points"    (number field)
-// 2. Open the linked Google Sheet
-//    → File → Share → Publish to web → Sheet1 → CSV → Publish
-// 3. Paste that URL below
-// ─────────────────────────────────────────────────────────────────
+
 const SHEET_CSV_URL =
   "https://docs.google.com/spreadsheets/d/1z8dWBB84dKLqcg8phkHKkTlAGIqQyD_5aqWnO5Q8xfs/export?format=csv";
 
