@@ -1,0 +1,272 @@
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ── Global Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #020b18;
+  color: #e0f7ff;
+  font-family: 'Rajdhani', sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ── App Shell ── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__main {
+  flex: 1;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #020b18;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00e5ff, #7c3aed);
+  border-radius: 4px;
+}
+
+/* ──────────────────────────────
+   HERO PLACEHOLDER
+   Replace this section with your own pages
+   ────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px 80px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 50%, rgba(0, 229, 255, 0.10) 0%, transparent 50%),
+    linear-gradient(180deg, #020b18 0%, #030e22 50%, #020b18 100%);
+}
+
+/* Subtle grid overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero__bg-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 700px;
+  gap: 16px;
+}
+
+.hero__eyebrow {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #7ecfdf;
+  opacity: 0.8;
+}
+
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero__title-pmt {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(24px, 6vw, 42px);
+  font-weight: 700;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #00e5ff, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+.hero__title-sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(13px, 3vw, 18px);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #7ecfdf;
+  font-weight: 500;
+}
+
+.hero__title-pandora {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(52px, 16vw, 120px);
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #00e5ff 0%, #22d3ee 40%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 0.95;
+  filter: drop-shadow(0 0 40px rgba(0, 229, 255, 0.3));
+}
+
+.hero__tagline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(13px, 3vw, 17px);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #e0f7ff;
+  opacity: 0.75;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero__btn {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 32px;
+  transition: all 0.3s ease;
+}
+
+.hero__btn--primary {
+  background: linear-gradient(135deg, #00e5ff, #00b8d4);
+  color: #020b18;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  box-shadow: 0 0 24px rgba(0, 229, 255, 0.4);
+}
+
+.hero__btn--primary:hover {
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.hero__btn--outline {
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: #00e5ff;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  background: transparent;
+}
+
+.hero__btn--outline:hover {
+  background: rgba(0, 229, 255, 0.06);
+  border-color: rgba(0, 229, 255, 0.8);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Scroll hint */
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.4;
+  animation: breathe 2.5s ease-in-out infinite;
+}
+
+.hero__scroll-hint span {
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, #00e5ff);
+}
+
+.hero__scroll-hint p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #00e5ff;
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.7; transform: translateX(-50%) translateY(5px); }
+}
+
+.coming-soon {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #020b18;
+  padding: 100px 24px;
+}
+.coming-soon__inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.coming-soon__eyebrow {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #00e5ff;
+  opacity: 0.7;
+}
+.coming-soon__title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(36px, 8vw, 64px);
+  font-weight: 700;
+  letter-spacing: 6px;
+  background: linear-gradient(135deg, #e0f7ff, #00e5ff, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+}
+.coming-soon__sub {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #7ecfdf;
+  opacity: 0.8;
+}
