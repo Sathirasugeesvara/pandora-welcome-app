@@ -18,9 +18,9 @@ const NAV_LINKS = {
   ],
   Clans: CLANS.map((c) => ({ label: c.name, page: "clans" })),
   Connect: [
-    { label: "Email",    page: null },
-    { label: "WhatsApp", page: null },
-    { label: "Phone",    page: null },
+    { label: "Email",    page: "mailto:sathirasugeesvara@gmail.com" },
+    { label: "WhatsApp", page: "https://chat.whatsapp.com/Cx0zXSSC63OH83ZE5CnHaV" },
+    { label: "Phone",    page: "tel:+94764627089" },
   ],
 };
 
@@ -28,11 +28,24 @@ export default function Footer({ onNavigate }) {
   const year = new Date().getFullYear();
 
   const handleClick = (page) => {
-    if (page && onNavigate) {
-      onNavigate(page);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
+  if (!page) return;
+
+  // External links
+  if (
+    page.startsWith("http") ||
+    page.startsWith("mailto:") ||
+    page.startsWith("tel:")
+  ) {
+    window.open(page, "_blank");
+    return;
+  }
+
+  // Internal navigation
+  if (onNavigate) {
+    onNavigate(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+};
 
   return (
     <footer className="footer">
@@ -109,6 +122,11 @@ export default function Footer({ onNavigate }) {
         <div className="footer__bottom-inner">
           <span className="footer__copyright">
             © {year} AMT Family · University of Sri Jayewardenepura
+          </span>
+          <span className="footer__developer">
+            <a href="https://sathirasugeesvara.github.io" target="_blank" rel="noopener noreferrer" className="footer__developer">
+              Designed & Developed by Sathira Sugeesvara
+            </a>
           </span>
           <span className="footer__pandora-tag">✦ PANDORA — A NEW JOURNEY BEGINS ✦</span>
         </div>

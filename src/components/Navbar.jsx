@@ -58,8 +58,8 @@ export default function Navbar({ currentPage, onNavigate }) {
         </ul>
 
         {/* CTA */}
-        <button className="navbar__cta" onClick={() => handleNav("clans")}>
-          Join a Clan
+        <button className="navbar__cta" onClick={() => handleNav("/")}>
+          ✦
         </button>
 
         {/* Hamburger */}
@@ -86,7 +86,7 @@ export default function Navbar({ currentPage, onNavigate }) {
             </button>
           ))}
           <button className="navbar__mobile-cta" onClick={() => handleNav("clans")}>
-            ✦ Join a Clan ✦
+            ✦ Clan ✦
           </button>
         </div>
       </div>
