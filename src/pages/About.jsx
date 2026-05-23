@@ -1,12 +1,12 @@
 import "./About.css";
 
 const TEAM = [
-  { role: "Event Director",       name: "Hansana Dilshan", img: "/src/assets/hansana.png" },
-  { role: "Co-Director",          name: "Coming Soon", img: "/src/assets/coming-soon.png" },
-  { role: "Creative Lead",        name: "Iran Ushara", img: "/src/assets/Iran.png.png" },
-  { role: "Financial Head",       name: "Coming Soon", img: "/src/assets/coming-soon.png" },
-  { role: "Design Head",          name: "Himansith Wickramasinghe", img: "/src/assets/himansith.png" },
-  { role: "Web Developer",        name: "Sathira Sugeesvara", img: "/src/assets/sathira.png"},
+  { role: "Event Director",       name: "Coming Soon", icon: "◈" },
+  { role: "Co-Director",          name: "Coming Soon", icon: "◈" },
+  { role: "Creative Lead",        name: "Coming Soon", icon: "◈" },
+  { role: "Logistics Head",       name: "Coming Soon", icon: "◈" },
+  { role: "Design Team",          name: "Coming Soon", icon: "◈" },
+  { role: "Web Development",      name: "Coming Soon", icon: "◈" },
 ];
 
 const EVENT_DETAILS = [
@@ -54,10 +54,10 @@ export default function About() {
           <div className="about__event-card">
             <div className="about__event-card-glow" />
             <div className="about__event-icon">✦</div>
-            <h2 className="about__event-title">Freshers' Welcome Night</h2>
+            <h2 className="about__event-title">Freshers' Welcome</h2>
             <p className="about__event-body">
               <strong>PANDORA</strong> is the official Freshers' Welcome event of the
-              PMT Combination, Faculty of Applied Sciences,
+              Pure Maths Combination, Faculty of Applied Sciences,
               University of Sri Jayewardenepura. This day is dedicated to welcoming the newest
               members of the PMT family into a world unlike any other — a world of bioluminescent
               wonder, clan spirit, and lifelong bonds.
@@ -113,7 +113,7 @@ export default function About() {
               <div className="about__dress-icon">🖤</div>
               <h3 className="about__dress-title">All Black</h3>
               <p className="about__dress-desc">
-                Enter Pandora in darkness. The night glows for those who wear black —
+                Enter Pandora in darkness. The day glows for those who wear black —
                 let the bioluminescent world of Pandora illuminate you.
                 Full black attire is required for all attendees.
               </p>
@@ -151,7 +151,7 @@ export default function About() {
             <div className="about__organiser-info">
               <h3 className="about__organiser-name">AMT Family</h3>
               <p className="about__organiser-sub">
-                Applied Mathematics<br />
+                Applied Maths Combination<br />
                 Faculty of Applied Sciences<br />
                 University of Sri Jayewardenepura
               </p>
@@ -187,14 +187,7 @@ export default function About() {
                 className="about__team-card"
                 style={{ animationDelay: `${i * 0.07}s` }}
               >
-                <div className="about__team-avatar">
-                  <img
-                    src={member.img}
-                    alt={member.name}
-                    className="about__team-photo"
-                    onError={(e) => { e.target.style.display = "none"; }}
-                  />
-                </div>
+                <div className="about__team-icon">{member.icon}</div>
                 <p className="about__team-role">{member.role}</p>
                 <p className="about__team-name">{member.name}</p>
               </div>

@@ -5,6 +5,7 @@ import Gallery from "./pages/Gallery";
 import Leaderboard from "./pages/Leaderboard";
 import Clans from "./pages/Clans";
 import About from "./pages/About";
+import Invitation from "./pages/Invitation";
 import "./App.css";
 
 // ── Page placeholders (replace with real pages as you build them) ──
@@ -54,11 +55,11 @@ function ComingSoonPage({ label }) {
 // ── Page map — swap ComingSoonPage for real pages as you build them ──
 const PAGES = {
   home:        (props) => <HomePage {...props} />,
-  invitation:  ()      => <ComingSoonPage label="Invitation" />,
-  leaderboard: ()      => <Leaderboard />,
+  invitation:  ()      => <Invitation />,
+  leaderboard: ()      => <Leaderboard />,//<ComingSoonPage label="Leaderboard" />
   gallery:     ()      => <Gallery />,
   about:       ()      => <About />,
-  clans:       ()      => <Clans />,
+  clans:       ()      => <Clans />,//<ComingSoonPage label="Clans" />
 };
 
 export default function App() {
