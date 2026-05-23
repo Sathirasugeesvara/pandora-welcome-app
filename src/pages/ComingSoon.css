@@ -1,0 +1,33 @@
+.cs-game {
+  min-height: 100vh; display: flex; align-items: center;
+  justify-content: center; background: #010810; padding: 100px 24px;
+}
+.cs-game__inner {
+  text-align: center; display: flex; flex-direction: column;
+  align-items: center; gap: 16px;
+}
+.cs-game__eyebrow {
+  font-family: 'Rajdhani', sans-serif; font-size: 11px;
+  letter-spacing: 5px; text-transform: uppercase; color: #00e5ff; opacity: 0.6;
+}
+.cs-game__title {
+  font-family: 'Cinzel', serif; font-size: clamp(32px, 8vw, 60px);
+  font-weight: 700; letter-spacing: 4px;
+  background: linear-gradient(135deg, #e0f7ff, #00e5ff, #a78bfa);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin: 0;
+}
+.cs-game__sub {
+  font-family: 'Rajdhani', sans-serif; font-size: 15px;
+  letter-spacing: 1px; color: #7ecfdf; opacity: 0.7;
+}
+.cs-game__btn {
+  margin-top: 8px; padding: 12px 28px;
+  background: transparent; border: 1px solid rgba(0,229,255,0.3);
+  color: #00e5ff; font-family: 'Cinzel', serif; font-size: 12px;
+  letter-spacing: 3px; cursor: pointer; transition: all 0.3s ease;
+}
+.cs-game__btn:hover {
+  background: rgba(0,229,255,0.08); border-color: #00e5ff;
+  box-shadow: 0 0 20px rgba(0,229,255,0.2);
+}

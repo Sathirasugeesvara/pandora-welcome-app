@@ -6,9 +6,15 @@ import Leaderboard from "./pages/Leaderboard";
 import Clans from "./pages/Clans";
 import About from "./pages/About";
 import Invitation from "./pages/Invitation";
+import Games from "./pages/Games";
+import NaviName from "./pages/NaviName";
+import ClanQuiz from "./pages/ClanQuiz";
+import ClanRoulette from "./pages/ClanRoulette";
+import Trivia from "./pages/Trivia";
+import MemoryMatch from "./pages/MemoryMatch";
+import WordScramble from "./pages/WordScramble";
 import "./App.css";
 
-// ── Page placeholders (replace with real pages as you build them) ──
 function HomePage({ onNavigate }) {
   return (
     <section id="home" className="hero">
@@ -24,8 +30,8 @@ function HomePage({ onNavigate }) {
         </h1>
         <p className="hero__tagline">A New Journey Begins</p>
         <div className="hero__ctas">
-          <button className="hero__btn hero__btn--primary" onClick={() => onNavigate("clans")}>
-            Discover Clans
+          <button className="hero__btn hero__btn--primary" onClick={() => onNavigate("games")}>
+            Play Games
           </button>
           <button className="hero__btn hero__btn--outline" onClick={() => onNavigate("leaderboard")}>
             Leaderboard
@@ -52,15 +58,26 @@ function ComingSoonPage({ label }) {
   );
 }
 
-// ── Page map — swap ComingSoonPage for real pages as you build them ──
 const PAGES = {
-  home:        (props) => <HomePage {...props} />,
-  invitation:  ()      => <Invitation />,
-  leaderboard: ()      => <Leaderboard />,//<ComingSoonPage label="Leaderboard" />
-  gallery:     ()      => <Gallery />,
-  about:       ()      => <About />,
-  clans:       ()      => <Clans />,//<ComingSoonPage label="Clans" />
+  home:        (props)      => <HomePage {...props} />,
+  invitation:  (props)      => <Invitation {...props} />,
+  leaderboard: (props)      => <Leaderboard {...props} />,//<ComingSoonPage label="Leaderboard" />
+  gallery:     (props)      => <Gallery {...props} />,
+  games:       (props)      => <Games {...props} />,
+  about:       (props)      => <About {...props} />,
+  clans:       (props)      => <Clans {...props} />,//<ComingSoonPage label="Clans" />
+
+  
+  naviname:     (props) => <NaviName {...props} />,
+  clanquiz:     (props) => <ClanQuiz {...props} />,
+  clanroulette: (props) => <ClanRoulette {...props} />,
+  trivia:       (props) => <Trivia {...props} />,
+  memorymatch:  (props) => <MemoryMatch {...props} />,
+  wordscramble: (props) => <WordScramble {...props} />,
 };
+
+// Pages that are "sub-pages" — show Back button
+const GAME_PAGES = ["naviname","clanquiz","clanroulette","trivia","memorymatch","wordscramble"];
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -71,6 +88,7 @@ export default function App() {
   };
 
   const PageComponent = PAGES[currentPage] ?? PAGES.home;
+  const isGamePage = GAME_PAGES.includes(currentPage);
 
   return (
     <div className="app">
@@ -82,3 +100,4 @@ export default function App() {
     </div>
   );
 }
+

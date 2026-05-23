@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: "Leaderboard", page: "leaderboard" },
   { label: "Clans",       page: "clans" },
   { label: "Gallery",     page: "gallery" },
+  { label: "Games",       page: "games" },
   { label: "About",       page: "about" },
 ];
 
