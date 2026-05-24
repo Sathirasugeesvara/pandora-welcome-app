@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./Footer.css";
 
 const CLANS = [
@@ -14,21 +15,88 @@ const NAV_LINKS = {
     { label: "Home",        page: "home" },
     { label: "Invitation",  page: "invitation" },
     { label: "Leaderboard", page: "leaderboard" },
+    { label: "Clans",       page: "clans" },
+    { label: "Gallery",     page: "gallery" },
+    { label: "Games",       page: "games" },
     { label: "About",       page: "about" },
   ],
   Clans: CLANS.map((c) => ({ label: c.name, page: "clans" })),
   Connect: [
-    { label: "Email",    page: "mailto:sathirasugeesvara@gmail.com" },
-    { label: "WhatsApp", page: "https://chat.whatsapp.com/Cx0zXSSC63OH83ZE5CnHaV" },
-    { label: "Phone",    page: "tel:+94764627089" },
-  ],
+  { label: "Email", page: "mailto:sathirasugeesvara@gmail.com" },
+  { label: "WhatsApp", page: "whatsapp-popup" },
+  { label: "Phone", page: "tel:+94764627089" },
+],
 };
+
+const WHATSAPP_LINK = "https://chat.whatsapp.com/Cx0zXSSC63OH83ZE5CnHaV";
+
+// ── WhatsApp Popup ──
+function WhatsAppPopup({ onClose }) {
+  const [denied, setDenied] = useState(false);
+
+  const handleYes = () => {
+    window.open(WHATSAPP_LINK, "_blank");
+    onClose();
+  };
+
+  const handleNo = () => {
+    setDenied(true);
+  };
+
+  return (
+    <div className="wa-overlay" onClick={onClose}>
+      <div className="wa-popup" onClick={(e) => e.stopPropagation()}>
+        <div className="wa-popup__glow" />
+        <div className="wa-popup__corner wa-popup__corner--tl" />
+        <div className="wa-popup__corner wa-popup__corner--tr" />
+        <div className="wa-popup__corner wa-popup__corner--bl" />
+        <div className="wa-popup__corner wa-popup__corner--br" />
+
+        <div className="wa-popup__icon">💬</div>
+
+        {!denied ? (
+          <>
+            <h3 className="wa-popup__title">PMT Family WhatsApp</h3>
+            <p className="wa-popup__question">
+              Are you a member of the <span className="wa-popup__highlight">PMT Family</span>?
+            </p>
+            <div className="wa-popup__btns">
+              <button className="wa-popup__btn wa-popup__btn--yes" onClick={handleYes}>
+                ✓ Yes, I am
+              </button>
+              <button className="wa-popup__btn wa-popup__btn--no" onClick={handleNo}>
+                ✗ No
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <h3 className="wa-popup__title">Access Restricted</h3>
+            <p className="wa-popup__denied">
+              Sorry, this group is exclusively for<br />
+              <span className="wa-popup__highlight">PMT Family members</span> only.
+            </p>
+            <button className="wa-popup__btn wa-popup__btn--close" onClick={onClose}>
+              Close
+            </button>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function Footer({ onNavigate }) {
   const year = new Date().getFullYear();
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleClick = (page) => {
   if (!page) return;
+
+  if (page === "whatsapp-popup") {
+    setShowPopup(true);
+    return;
+  }
 
   // External links
   if (
@@ -48,18 +116,21 @@ export default function Footer({ onNavigate }) {
 };
 
   return (
-    <footer className="footer">
-      <div className="footer__glow-bar" />
+    <>
+      {showPopup && <WhatsAppPopup onClose={() => setShowPopup(false)} />}
 
-      <div className="footer__particles" aria-hidden="true">
-        {Array.from({ length: 18 }).map((_, i) => (
-          <span key={i} className="footer__particle" style={{
-            left: `${(i * 5.8 + 3) % 100}%`,
-            animationDelay: `${(i * 0.4) % 6}s`,
-            animationDuration: `${4 + (i % 4)}s`,
-          }} />
-        ))}
-      </div>
+      <footer className="footer">
+        <div className="footer__glow-bar" />
+
+        <div className="footer__particles" aria-hidden="true">
+          {Array.from({ length: 18 }).map((_, i) => (
+            <span key={i} className="footer__particle" style={{
+              left: `${(i * 5.8 + 3) % 100}%`,
+              animationDelay: `${(i * 0.4) % 6}s`,
+              animationDuration: `${4 + (i % 4)}s`,
+            }} />
+          ))}
+        </div>
 
       <div className="footer__container">
         {/* Brand */}
@@ -132,5 +203,6 @@ export default function Footer({ onNavigate }) {
         </div>
       </div>
     </footer>
+    </>
   );
 }
