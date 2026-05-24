@@ -1,23 +1,25 @@
 import "./Gallery.css";
 
-// import image1 from "../assets/image1.png";
+ import image1 from "../assets/image1.png";
 // import image2 from "../assets/image2.png";
 // import image3 from "../assets/image3.png";
 // import image4 from "../assets/image4.png";
 // import image5 from "../assets/image5.png";
 // import image6 from "../assets/image6.png";
+// import image7 from "../assets/image7.png";
 
 const IMAGES = [
-  //{ src: image1, caption: "Pandora Awakens" },
-  // { src: image2, caption: "" },
-  // { src: image3, caption: "" },
-  // { src: image4, caption: "" },
-  // { src: image5, caption: "" },
-  // { src: image6, caption: "" },
+  { src: image1, caption: "All Members in PMT Family" },
+  // { src: image2, caption: "Clan Metkayina" },
+  // { src: image3, caption: "Clan Ash Clan" },
+  // { src: image4, caption: "Clan Omaticaya" },
+  // { src: image5, caption: "Clan Sky Riders" },
+  // { src: image6, caption: "Clan Tulkun Guardians" },
+  // { src: image7, caption: "Clan Pandora Warriors" },
 ];
 
-// Remaining empty slots to always show 6 grid cells
-const GRID_SIZE   = 6;
+// Remaining empty slots to always show 7 grid cells
+const GRID_SIZE   = 7;
 const filledCount = IMAGES.length;
 const emptySlots  = Math.max(0, GRID_SIZE - filledCount);
 

@@ -178,7 +178,7 @@ export default function About() {
             <span className="about__section-line" />
           </div>
           <p className="about__team-note">
-            The dedicated team making this night possible — names will be revealed soon.
+            The dedicated team making this day possible — names will be revealed soon.
           </p>
           <div className="about__team-grid">
             {TEAM.map((member, i) => (
