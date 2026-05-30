@@ -2,34 +2,33 @@ import { useEffect, useState, useRef } from "react";
 import "./BeforeLeave.css";
 
 export default function BeforeLeave() {
-  const [show, setShow] = useState(false);
-  const confirmedRef    = useRef(false);
+  const [show,        setShow]        = useState(false);
+  const confirmedRef  = useRef(false);
+  const sentinelCount = useRef(1); // tracks how many sentinels we've pushed
 
   useEffect(() => {
-    // Push ONE sentinel entry so we can catch the first back press
+    // Push the first sentinel
     window.history.pushState({ pandoraSentinel: true }, "");
 
-    const onPopState = (e) => {
-      // User confirmed leave already — let them go freely
-      if (confirmedRef.current) return;
-
-      // Re-push sentinel so we intercept again if they press Stay
+    const onPopState = () => {
+      if (confirmedRef.current) return; // already leaving — don't intercept
+      // Push another sentinel to keep us here
       window.history.pushState({ pandoraSentinel: true }, "");
+      sentinelCount.current += 1;
       setShow(true);
     };
 
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
-  }, []); // ← empty deps, runs once even in StrictMode because cleanup removes the first listener
+  }, []);
 
   const handleStay = () => setShow(false);
 
   const handleLeave = () => {
     confirmedRef.current = true;
     setShow(false);
-    // go back enough steps to clear sentinels + actually leave
-    // We count: initial sentinel + the one re-pushed in onPopState = 2
-    window.history.go(-2);
+    // Go back by exactly how many sentinels we pushed
+    window.history.go(-sentinelCount.current);
   };
 
   if (!show) return null;
@@ -40,13 +39,11 @@ export default function BeforeLeave() {
 
         <div className="bl-popup__shimmer" />
         <div className="bl-popup__glow" />
-
         <span className="bl-popup__corner bl-popup__corner--tl" />
         <span className="bl-popup__corner bl-popup__corner--tr" />
         <span className="bl-popup__corner bl-popup__corner--bl" />
         <span className="bl-popup__corner bl-popup__corner--br" />
 
-        {/* Animated icon */}
         <div className="bl-popup__icon-wrap">
           <div className="bl-popup__icon-ring bl-popup__icon-ring--1" />
           <div className="bl-popup__icon-ring bl-popup__icon-ring--2" />
@@ -55,7 +52,6 @@ export default function BeforeLeave() {
         </div>
 
         <p className="bl-popup__eyebrow">✦ Eywa Speaks ✦</p>
-
         <h3 className="bl-popup__title">Leaving Pandora?</h3>
 
         <div className="bl-popup__divider">
@@ -68,9 +64,7 @@ export default function BeforeLeave() {
           has only just begun.
         </p>
 
-        <p className="bl-popup__sub">
-          — Are you sure you want to leave? —
-        </p>
+        <p className="bl-popup__sub">— Are you sure you want to leave? —</p>
 
         <div className="bl-popup__btns">
           <button className="bl-popup__btn bl-popup__btn--stay" onClick={handleStay}>
@@ -83,7 +77,6 @@ export default function BeforeLeave() {
         </div>
 
         <p className="bl-popup__quote">"I see you." — Eywa</p>
-
       </div>
     </div>
   );
