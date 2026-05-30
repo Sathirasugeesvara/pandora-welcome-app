@@ -5,8 +5,8 @@ const SHEET_ID  = "1p3fyLuCrlzu0tbjLgcmPnaePwi3mlX7opY6vcWVjnFg";
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
 
 
-const EVENT_DATE  = "Coming Soon";   // e.g. "15th August 2026"
-const EVENT_TIME  = "Coming Soon";   // e.g. "6:00 PM"
+const EVENT_DATE  = "14th June 2026";   
+const EVENT_TIME  = "All Day";   
 const EVENT_VENUE = "Coming Soon";   // e.g. "Nelum Pokuna Theatre"
 
 
@@ -376,7 +376,7 @@ export default function Invitation() {
                 <div className="inv__card-event-item">
                   <span className="inv__card-event-icon">🖤</span>
                   <span className="inv__card-event-label">Dress Code</span>
-                  <span className="inv__card-event-val">All Black</span>
+                  <span className="inv__card-event-val">Dark Blue or Black</span>
                 </div>
               </div>
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
+import BeforeLeave from "./components/BeforeLeave";
 import Footer from "./components/Footer";
 import Gallery from "./pages/Gallery";
 import Leaderboard from "./pages/Leaderboard";
@@ -69,9 +70,10 @@ export default function App() {
 
   return (
     <div className="app">
-      <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
-      <main className="app__main">
-        {isGamePage && (
+          <BeforeLeave />
+          <Navbar currentPage={currentPage} onNavigate={handleNavigate} />
+          <main className="app__main">
+          {isGamePage && (
           <button className="app__back-btn" onClick={() => handleNavigate("games")}>
             ← Back to Games
           </button>

@@ -10,10 +10,10 @@ const TEAM = [
 ];
 
 const EVENT_DETAILS = [
-  { label: "Date",       value: "Coming Soon",  icon: "📅", ready: false },
-  { label: "Time",       value: "Coming Soon",  icon: "🕐", ready: false },
+  { label: "Date",       value: "14th of June",  icon: "📅", ready: true },
+  { label: "Time",       value: "All day",  icon: "🕐", ready: true },
   { label: "Venue",      value: "To Be Announced", icon: "📍", ready: false },
-  { label: "Dress Code", value: "Black",        icon: "🖤", ready: true  },
+  { label: "Dress Code", value: "Dark Blue or Black",        icon: "🖤", ready: true  },
   { label: "Entry",      value: "By Invitation", icon: "✦",  ready: true  },
   { label: "Organised By", value: "AMT Family", icon: "🏛",  ready: true  },
 ];
@@ -110,18 +110,18 @@ export default function About() {
           </div>
           <div className="about__dress-card">
             <div className="about__dress-left">
-              <div className="about__dress-icon">🖤</div>
-              <h3 className="about__dress-title">All Black</h3>
+              <div className="about__dress-icon">💙🖤</div>
+              <h3 className="about__dress-title">Dark Blue or Black</h3>
               <p className="about__dress-desc">
-                Enter Pandora in darkness. The day glows for those who wear black —
-                let the bioluminescent world of Pandora illuminate you.
-                Full black attire is required for all attendees.
+                Enter Pandora in deep tones of night. Dress in dark blue or black to match the
+                glowing atmosphere of Pandora’s world.
+                Smart dark-themed attire is required for all attendees.
               </p>
               <div className="about__dress-tags">
+                <span>Dark Blue Top</span>
                 <span>Black Top</span>
-                <span>Black Bottom</span>
-                <span>Black Shoes</span>
-                <span>Accessories Welcome</span>
+                <span>Dark Bottom</span>
+                <span>Dark Shoes</span>
               </div>
             </div>
             <div className="about__dress-right" aria-hidden="true">
