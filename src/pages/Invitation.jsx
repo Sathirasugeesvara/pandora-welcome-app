@@ -5,7 +5,7 @@ const SHEET_ID  = "1p3fyLuCrlzu0tbjLgcmPnaePwi3mlX7opY6vcWVjnFg";
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
 
 
-const EVENT_DATE  = "14th June 2026";   
+// const EVENT_DATE  = "14th June 2026";   
 const EVENT_TIME  = "All Day";   
 const EVENT_VENUE = "Coming Soon";   // e.g. "Nelum Pokuna Theatre"
 
