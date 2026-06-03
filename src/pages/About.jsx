@@ -10,7 +10,7 @@ const TEAM = [
 ];
 
 const EVENT_DETAILS = [
-  { label: "Date",       value: "14th of June",  icon: "📅", ready: true },
+  { label: "Date",       value: "To Be Announced",  icon: "📅", ready: false },
   { label: "Time",       value: "All day",  icon: "🕐", ready: true },
   { label: "Venue",      value: "To Be Announced", icon: "📍", ready: false },
   { label: "Dress Code", value: "Dark Blue or Black",        icon: "🖤", ready: true  },
