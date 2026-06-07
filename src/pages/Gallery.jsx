@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Gallery.css";
 
-import pandora1 from "../assets/image1.png";
+// import pandora1 from "../assets/image1.png";
 // import pandora2 from "../assets/pandora2.png";
 // import pandora3 from "../assets/pandora3.png";
 // import pandora4 from "../assets/pandora4.png";
@@ -9,7 +9,7 @@ import pandora1 from "../assets/image1.png";
 // import pandora6 from "../assets/pandora6.png";
 
 const PANDORA_IMAGES = [
-  { src: pandora1, caption: "All Members in PMT Family" },
+  // { src: pandora1, caption: "All Members in PMT Family" },
   // { src: pandora2, caption: "" },
   // { src: pandora3, caption: "" },
   // { src: pandora4, caption: "" },

@@ -29,8 +29,8 @@ function HomePage({ onNavigate }) {
         </h1>
         <p className="hero__tagline">A New Journey Begins</p>
         <div className="hero__ctas">
-          <button className="hero__btn hero__btn--primary" onClick={() => onNavigate("games")}>Play Games</button>
-          <button className="hero__btn hero__btn--outline" onClick={() => onNavigate("leaderboard")}>Leaderboard</button>
+          <button className="hero__btn hero__btn--primary" onClick={() => onNavigate("gallery")}>🖼️ Gallery</button>
+          <button className="hero__btn hero__btn--outline" onClick={() => onNavigate("leaderboard")}>🏆 Leaderboard</button>
         </div>
       </div>
       <div className="hero__scroll-hint"><span /><p>Scroll</p></div>
