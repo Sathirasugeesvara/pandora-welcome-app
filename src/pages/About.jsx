@@ -10,9 +10,9 @@ const TEAM = [
 ];
 
 const EVENT_DETAILS = [
-  { label: "Date",       value: "To Be Announced",  icon: "📅", ready: false },
+  { label: "Date",       value: "21st June",  icon: "📅", ready: true },
   { label: "Time",       value: "All day",  icon: "🕐", ready: true },
-  { label: "Venue",      value: "To Be Announced", icon: "📍", ready: false },
+  { label: "Venue",      value: "Botany Auditorium", icon: "📍", ready: true },
   { label: "Dress Code", value: "Dark Blue or Black",        icon: "🖤", ready: true  },
   { label: "Entry",      value: "By Invitation", icon: "✦",  ready: true  },
   { label: "Organised By", value: "AMT Family", icon: "🏛",  ready: true  },
@@ -206,42 +206,25 @@ export default function About() {
             <div className="about__venue-top">
               <div className="about__venue-icon">📍</div>
               <div>
-                <h3 className="about__venue-title">Venue To Be Announced</h3>
+                <h3 className="about__venue-title">Botany Auditorium</h3>
                 <p className="about__venue-sub">
-                  The perfect location for Pandora is being finalised. Check back soon for the big reveal.
+                  University of Sri Jayewardenepura. See the map below for directions.
                 </p>
               </div>
             </div>
 
-            {/* Map placeholder — replace src with real Google Maps embed when venue is confirmed */}
             <div className="about__map-wrap">
-              <div className="about__map-placeholder">
-                <div className="about__map-placeholder-inner">
-                  <div className="about__map-pin">📍</div>
-                  <p className="about__map-tba">Venue not confirmed yet</p>
-                  <p className="about__map-hint">
-                    Once the venue is booked, replace this with a Google Maps embed:
-                  </p>
-                  <code className="about__map-code">
-                    {`<iframe src="https://maps.google.com/maps?q=VENUE&output=embed" />`}
-                  </code>
-                </div>
-                {/* Animated scan effect */}
-                <div className="about__map-scan" />
-              </div>
-
-              {/* 
-                WHEN VENUE IS CONFIRMED — delete the div above and uncomment this:
-
-                <iframe
-                  className="about__map-iframe"
-                  title="Event Venue"
-                  src="https://maps.google.com/maps?q=YOUR+VENUE+NAME&output=embed"
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              */}
+              <iframe
+                className="about__map-iframe"
+                title="Event Venue"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d495.16247273304367!2d79.90382359273733!3d6.8546254779891385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b99309c25c9%3A0x7a646478ddd03d78!2sBotany%20Auditorium!5e0!3m2!1sen!2slk!4v1781699917759!5m2!1sen!2slk"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
 
             <div className="about__venue-tags">
