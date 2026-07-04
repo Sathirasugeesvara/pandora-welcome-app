@@ -1,20 +1,33 @@
 import { useState } from "react";
 import "./Gallery.css";
 
-// import pandora1 from "../assets/image1.png";
-// import pandora2 from "../assets/pandora2.png";
-// import pandora3 from "../assets/pandora3.png";
-// import pandora4 from "../assets/pandora4.png";
-// import pandora5 from "../assets/pandora5.png";
-// import pandora6 from "../assets/pandora6.png";
+ //import pandora1 from "../assets/image1.png";
+ import pandora2 from "../assets/pandora2.png";
+ import pandora3 from "../assets/pandora3.png";
+ import pandora4 from "../assets/pandora4.png";
+ import pandora5 from "../assets/pandora5.png";
+ import pandora6 from "../assets/pandora6.png";
+ import pandora7 from "../assets/pandora7.png";
+ import pandora8 from "../assets/pandoraimage1.png";
+ import pandora9 from "../assets/pandoraimage2.png";
+ import pandora10 from "../assets/pandoraimage3.png";
+ import pandora11 from "../assets/pandoraimage4.png";
 
 const PANDORA_IMAGES = [
-  // { src: pandora1, caption: "All Members in PMT Family" },
-  // { src: pandora2, caption: "" },
-  // { src: pandora3, caption: "" },
-  // { src: pandora4, caption: "" },
-  // { src: pandora5, caption: "" },
-  // { src: pandora6, caption: "" },
+  //{ src: pandora1, caption: "One Family • One Journey • PMT Freshers' Welcome 2026" },
+  { src: pandora2, caption: "Pandora Warriors • Strength Through Unity" },
+  { src: pandora3, caption: "Metkayina • Guardians of the Ocean Spirit" },
+  { src: pandora4, caption: "Omatikaya • Keepers of the Sacred Forest" },
+  { src: pandora5, caption: "Tulkun Guardians • Courage Beyond the Waves" },
+  { src: pandora6, caption: "Ash Clan • Forged in Fire, Bound by Pride" },
+  { src: pandora7, caption: "Sky Riders • Together We Soar Higher" },
+];
+
+const PANDORA_HIGHLIGHTS = [
+  {src: pandora8, caption: "The Guardian of Pandora welcomes the PMT Family."},
+  {src: pandora9, caption: "Fire, spirit, and the heartbeat of Pandora."},
+  {src: pandora10, caption: "The hunt begins — every warrior has a story."},
+  {src: pandora11, caption: "A moment of wonder beneath the Tree of Souls."},
 ];
 
 // MELLON'25 GALLERY
@@ -130,12 +143,27 @@ function FilledSlot({ img, index, onClick }) {
 }
 
 // ── Gallery Section ───────────────────────────────────────────
-function GallerySection({ id, eyebrow, title, subtitle, color, colorDim, colorGlow, images, totalSlots, onOpenLight }) {
+function GallerySection({
+  id,
+  eyebrow,
+  title,
+  subtitle,
+  color,
+  colorDim,
+  colorGlow,
+  images,
+  highlights = [],
+  totalSlots,
+  onOpenLight,
+}) {
   const filled    = images.length;
   const empties   = Math.max(0, totalSlots - filled);
   const hasImages = filled > 0;
-  const featured  = hasImages ? images[0] : null;
-  const gridImgs  = hasImages ? images.slice(1) : [];
+  const featured = images.length === totalSlots ? images[0] : null;
+  const gridImgs =
+    featured
+      ? images.slice(1)
+      : images;
   const gridEmpties = Math.max(0, totalSlots - 1 - gridImgs.length);
 
   return (
@@ -214,6 +242,38 @@ function GallerySection({ id, eyebrow, title, subtitle, color, colorDim, colorGl
           <EmptySlot key={`e${i}`} index={gridImgs.length + i} />
         ))}
       </div>
+
+      {/* Event Highlights */}
+
+{highlights.length > 0 && (
+  <>
+    <div className="gal__highlights-header">
+      <p className="gal__highlights-eyebrow">
+        ✦ EVENT HIGHLIGHTS ✦
+      </p>
+
+      <h4 className="gal__highlights-title">
+        Memories from Pandora
+      </h4>
+
+      <p className="gal__highlights-subtitle">
+        Every smile, every performance and every unforgettable moment from the
+        Freshers' Welcome.
+      </p>
+    </div>
+
+    <div className="gal__grid">
+      {highlights.map((img, i) => (
+        <FilledSlot
+          key={i}
+          img={img}
+          index={i}
+          onClick={onOpenLight}
+        />
+      ))}
+    </div>
+  </>
+)}
     </div>
   );
 }
@@ -279,11 +339,12 @@ export default function Gallery() {
           id="sec-pandora"
           eyebrow="✦ Freshers' Welcome 2026 ✦"
           title="PANDORA"
-          subtitle="A New Journey Begins — photos will be added on event day."
+          subtitle="A New Journey Begins — photos from an unforgettable day."
           color="#00e5ff"
           colorDim="rgba(0,229,255,0.06)"
           colorGlow="rgba(0,229,255,0.3)"
           images={PANDORA_IMAGES}
+          highlights={PANDORA_HIGHLIGHTS}
           totalSlots={7}
           onOpenLight={setLightboxImg}
         />

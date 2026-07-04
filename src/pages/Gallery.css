@@ -544,3 +544,42 @@
   .gal__grid { gap: 6px; }
   .gal__empty-state { padding: 40px 16px; }
 }
+
+
+/* ==========================================
+   PANDORA EVENT HIGHLIGHTS
+========================================== */
+
+.gal__highlights-header{
+    margin-top:40px;
+    margin-bottom:22px;
+    text-align:center;
+}
+
+.gal__highlights-eyebrow{
+    font-family:'Rajdhani',sans-serif;
+    color:var(--sec-color);
+    letter-spacing:5px;
+    font-size:11px;
+    opacity:.7;
+    text-transform:uppercase;
+}
+
+.gal__highlights-title{
+    font-family:'Cinzel',serif;
+    color:var(--sec-color);
+    letter-spacing:3px;
+    font-size:30px;
+    margin:8px 0;
+    text-shadow:0 0 20px var(--sec-glow);
+}
+
+.gal__highlights-subtitle{
+    font-family:'Rajdhani',sans-serif;
+    color:#7ecfdf;
+    opacity:.7;
+    letter-spacing:1px;
+    max-width:520px;
+    margin:auto;
+    line-height:1.6;
+}
