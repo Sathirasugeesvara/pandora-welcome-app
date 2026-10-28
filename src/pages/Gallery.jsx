@@ -98,7 +98,7 @@ function Lightbox({ img, onClose }) {
 }
 
 // ── Empty slot ────────────────────────────────────────────────
-function EmptySlot({ index, total }) {
+function EmptySlot({ index }) {
   return (
     <div className="gal__slot" style={{ animationDelay: `${index * 0.06}s` }}>
       <div className="gal__slot-inner">
@@ -156,9 +156,7 @@ function GallerySection({
   totalSlots,
   onOpenLight,
 }) {
-  const filled    = images.length;
-  const empties   = Math.max(0, totalSlots - filled);
-  const hasImages = filled > 0;
+  const filled = images.length;
   const featured = images.length === totalSlots ? images[0] : null;
   const gridImgs =
     featured

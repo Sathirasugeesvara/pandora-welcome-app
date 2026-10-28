@@ -15,7 +15,6 @@ export default function TapClan() {
   const [target,  setTarget]  = useState(null);
   const [score,   setScore]   = useState(0);
   const [lives,   setLives]   = useState(3);
-  const [timeLeft,setTimeLeft]= useState(3); // per round
   const [flash,   setFlash]   = useState(null); // clanId correct|wrong
   const [round,   setRound]   = useState(0);
   const timerRef = useRef(null);
@@ -24,7 +23,6 @@ export default function TapClan() {
     if (currentLives <= 0) { setPhase("done"); return; }
     const rand = CLANS[Math.floor(Math.random() * CLANS.length)];
     setTarget(rand);
-    setTimeLeft(Math.max(1.5, 3 - currentScore * 0.05)); // speeds up
     setFlash(null);
     setRound(r => r + 1);
   }, []);
@@ -34,16 +32,15 @@ export default function TapClan() {
     clearInterval(timerRef.current);
     const speed = Math.max(1500, 3000 - score * 50);
     timerRef.current = setTimeout(() => {
-      // time ran out — lose a life
       setFlash("timeout");
-      setLives(l => {
+      setLives((l) => {
         const nl = l - 1;
         setTimeout(() => nextRound(score, nl), 700);
         return nl;
       });
     }, speed);
     return () => clearTimeout(timerRef.current);
-  }, [target, phase]);
+  }, [nextRound, phase, score, target]);
 
   const start = () => {
     setScore(0); setLives(3); setRound(0);

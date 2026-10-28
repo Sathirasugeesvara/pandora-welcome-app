@@ -66,7 +66,6 @@ export default function Invitation() {
   const [revealed,  setRevealed]  = useState(false);
   const [searching, setSearching] = useState(false);
   const [downloading, setDownloading] = useState(false);
-  const [imgError,  setImgError]  = useState(false);
   const inputRef = useRef(null);
   const cardRef  = useRef(null);
 
@@ -94,7 +93,6 @@ export default function Invitation() {
     setSearching(true);
     setRevealed(false);
     setNotFound(false);
-    setImgError(false);
     setResult(null);
 
     setTimeout(() => {

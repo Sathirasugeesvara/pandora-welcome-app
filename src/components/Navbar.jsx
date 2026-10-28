@@ -59,7 +59,7 @@ export default function Navbar({ currentPage, onNavigate }) {
         </ul>
 
         {/* CTA */}
-        <button className="navbar__cta" onClick={() => handleNav("/")}>
+        <button className="navbar__cta" onClick={() => handleNav("home")}>
           ✦
         </button>
 
