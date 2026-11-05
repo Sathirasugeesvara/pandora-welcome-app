@@ -21,6 +21,22 @@ export default function Navbar({ currentPage, onNavigate }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [menuOpen]);
+
   const handleNav = (page) => {
     onNavigate(page);
     setMenuOpen(false);
@@ -28,14 +44,14 @@ export default function Navbar({ currentPage, onNavigate }) {
   };
 
   return (
-    <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
+    <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`} aria-label="Main navigation">
       <div className="navbar__glow-bar" />
 
       <div className="navbar__inner">
         {/* Logo */}
         <button className="navbar__logo" onClick={() => handleNav("home")}>
           <span className="navbar__logo-icon">
-            <img src="/favicon.png" alt="PMT Logo" className="navbar__logo-img" />
+            <img src="/favicon.webp" alt="PMT Logo" className="navbar__logo-img" width="38" height="38" decoding="async" />
           </span>
           <span className="navbar__logo-text">
             <span className="navbar__logo-pmt">PMT</span>
@@ -67,14 +83,22 @@ export default function Navbar({ currentPage, onNavigate }) {
         <button
           className={`navbar__hamburger ${menuOpen ? "navbar__hamburger--open" : ""}`}
           onClick={() => setMenuOpen((p) => !p)}
-          aria-label="Toggle menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="navbar-mobile-menu"
         >
           <span /><span /><span />
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`navbar__mobile ${menuOpen ? "navbar__mobile--open" : ""}`}>
+      <div
+        id="navbar-mobile-menu"
+        className={`navbar__mobile ${menuOpen ? "navbar__mobile--open" : ""}`}
+        aria-label="Mobile navigation"
+        aria-hidden={!menuOpen}
+        hidden={!menuOpen}
+      >
         <div className="navbar__mobile-inner">
           {NAV_LINKS.map((link, i) => (
             <button

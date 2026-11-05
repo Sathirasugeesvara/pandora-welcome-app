@@ -11,7 +11,7 @@ const CLANS = [
     colorDim: "rgba(57,255,20,0.08)",
     colorGlow: "rgba(57,255,20,0.4)",
     colorMid: "rgba(57,255,20,0.2)",
-    img: "/clans/omaticaya.png",
+    img: "/clans/omaticaya.webp",
     element: "🌿 Earth",
     strength: "Spirit Bond",
     territory: "Hometree Forest",
@@ -29,7 +29,7 @@ const CLANS = [
     colorDim: "rgba(0,229,255,0.08)",
     colorGlow: "rgba(0,229,255,0.4)",
     colorMid: "rgba(0,229,255,0.2)",
-    img: "/clans/metkayina.png",
+    img: "/clans/metkayina.webp",
     element: "🌊 Water",
     strength: "Ocean Mastery",
     territory: "Coral Reefs of Pandora",
@@ -47,7 +47,7 @@ const CLANS = [
     colorDim: "rgba(255,107,53,0.08)",
     colorGlow: "rgba(255,107,53,0.4)",
     colorMid: "rgba(255,107,53,0.2)",
-    img: "/clans/ash-clan.png",
+    img: "/clans/ash-clan.webp",
     element: "🔥 Fire",
     strength: "Volcanic Power",
     territory: "The Ash Peaks",
@@ -65,7 +65,7 @@ const CLANS = [
     colorDim: "rgba(167,139,250,0.08)",
     colorGlow: "rgba(167,139,250,0.4)",
     colorMid: "rgba(167,139,250,0.2)",
-    img: "/clans/sky-riders.png",
+    img: "/clans/sky-riders.webp",
     element: "⚡ Wind",
     strength: "Aerial Combat",
     territory: "The Floating Peaks",
@@ -83,7 +83,7 @@ const CLANS = [
     colorDim: "rgba(34,211,238,0.08)",
     colorGlow: "rgba(34,211,238,0.4)",
     colorMid: "rgba(34,211,238,0.2)",
-    img: "/clans/tulkun-guardians.png",
+    img: "/clans/tulkun-guardians.webp",
     element: "🐋 Deep",
     strength: "Ancient Wisdom",
     territory: "The Deep Waters",
@@ -101,7 +101,7 @@ const CLANS = [
     colorDim: "rgba(192,132,252,0.08)",
     colorGlow: "rgba(192,132,252,0.4)",
     colorMid: "rgba(192,132,252,0.2)",
-    img: "/clans/pandora-warriors.png",
+    img: "/clans/pandora-warriors.webp",
     element: "💜 Spirit",
     strength: "Unity & Honor",
     territory: "All of Pandora",
@@ -167,6 +167,8 @@ export default function Clans() {
                     src={clan.img}
                     alt={clan.name}
                     className="clan-card__img"
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => { e.target.style.display = "none"; }}
                   />
                   <div className="clan-card__img-glow" />

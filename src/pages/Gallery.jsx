@@ -1,20 +1,25 @@
 import { useState } from "react";
 import "./Gallery.css";
 
- //import pandora1 from "../assets/image1.png";
- import pandora2 from "../assets/pandora2.png";
- import pandora3 from "../assets/pandora3.png";
- import pandora4 from "../assets/pandora4.png";
- import pandora5 from "../assets/pandora5.png";
- import pandora6 from "../assets/pandora6.png";
- import pandora7 from "../assets/pandora7.png";
- import pandora8 from "../assets/pandoraimage1.png";
- import pandora9 from "../assets/pandoraimage2.png";
- import pandora10 from "../assets/pandoraimage3.png";
- import pandora11 from "../assets/pandoraimage4.png";
+ import pandora1 from "../assets/image1.webp";
+ import pandora2 from "../assets/pandora2.webp";
+ import pandora3 from "../assets/pandora3.webp";
+ import pandora4 from "../assets/pandora4.webp";
+ import pandora5 from "../assets/pandora5.webp";
+ import pandora6 from "../assets/pandora6.webp";
+ import pandora7 from "../assets/pandora7.webp";
+
+ import pandora8 from "../assets/pandoraimage1.webp";
+ import pandora9 from "../assets/pandoraimage2.webp";
+ import pandora10 from "../assets/pandoraimage3.webp";
+ import pandora11 from "../assets/pandoraimage4.webp";
+ import pandora12 from "../assets/pandoraimage5.webp";
+ import pandora13 from "../assets/pandoraimage6.webp";
+ import pandora14 from "../assets/pandoraimage7.webp";
+ import pandora15 from "../assets/pandoraimage8.webp";
 
 const PANDORA_IMAGES = [
-  //{ src: pandora1, caption: "One Family • One Journey • PMT Freshers' Welcome 2026" },
+  { src: pandora1, caption: "One Family • One Journey • PMT Freshers' Welcome 2026" },
   { src: pandora2, caption: "Pandora Warriors • Strength Through Unity" },
   { src: pandora3, caption: "Metkayina • Guardians of the Ocean Spirit" },
   { src: pandora4, caption: "Omatikaya • Keepers of the Sacred Forest" },
@@ -28,15 +33,19 @@ const PANDORA_HIGHLIGHTS = [
   {src: pandora9, caption: "Fire, spirit, and the heartbeat of Pandora."},
   {src: pandora10, caption: "The hunt begins — every warrior has a story."},
   {src: pandora11, caption: "A moment of wonder beneath the Tree of Souls."},
+  {src: pandora12, caption: "Steady hands, fearless heart — a Pandora archer finds their mark."},
+  {src: pandora13, caption: "A helping hand, a shared laugh, and a memory to treasure."},
+  {src: pandora14, caption: "Draw the bow, trust your aim, and let the moment fly."},
+  {src: pandora15, caption: "One last shot, one loud cheer, one unforgettable day."},
 ];
 
 // MELLON'25 GALLERY
 
- import mellon1 from "../assets/mellon1.png";
- import mellon2 from "../assets/mellon2.png";
- import mellon3 from "../assets/mellon3.png";
- import mellon4 from "../assets/mellon4.png";
- import mellon5 from "../assets/mellon5.png";
+ import mellon1 from "../assets/mellon1.webp";
+ import mellon2 from "../assets/mellon2.webp";
+ import mellon3 from "../assets/mellon3.webp";
+ import mellon4 from "../assets/mellon4.webp";
+ import mellon5 from "../assets/mellon5.webp";
 
 const MELLON_IMAGES = [
    { src: mellon1, caption: "" },
@@ -48,11 +57,11 @@ const MELLON_IMAGES = [
 
 // EXPERANZA GALLERY
 
- import experanza1 from "../assets/experanza1.png";
- import experanza2 from "../assets/experanza2.png";
- import experanza3 from "../assets/experanza3.png";
- import experanza4 from "../assets/experanza4.png";
- import experanza5 from "../assets/experanza5.png";
+ import experanza1 from "../assets/experanza1.webp";
+ import experanza2 from "../assets/experanza2.webp";
+ import experanza3 from "../assets/experanza3.webp";
+ import experanza4 from "../assets/experanza4.webp";
+ import experanza5 from "../assets/experanza5.webp";
 
 const EXPERANZA_IMAGES = [
    { src: experanza1, caption: "" },
@@ -64,11 +73,11 @@ const EXPERANZA_IMAGES = [
 
 // ENCHANTUS'23 GALLERY — 5 photos
 
- import enchantus1 from "../assets/enchantus1.png";
- import enchantus2 from "../assets/enchantus2.png";
- import enchantus3 from "../assets/enchantus3.png";
- import enchantus4 from "../assets/enchantus4.png";
- import enchantus5 from "../assets/enchantus5.png";
+ import enchantus1 from "../assets/enchantus1.webp";
+ import enchantus2 from "../assets/enchantus2.webp";
+ import enchantus3 from "../assets/enchantus3.webp";
+ import enchantus4 from "../assets/enchantus4.webp";
+ import enchantus5 from "../assets/enchantus5.webp";
 
 const ENCHANTUS_IMAGES = [
   { src: enchantus1, caption: "" },
@@ -88,6 +97,7 @@ function Lightbox({ img, onClose }) {
         src={img.src}
         alt={img.caption || ""}
         className="lightbox__img"
+        decoding="async"
         onClick={(e) => e.stopPropagation()}
       />
       {img.caption && (
@@ -129,7 +139,7 @@ function FilledSlot({ img, index, onClick }) {
       onClick={() => onClick(img)}
     >
       <div className="gal__slot-inner">
-        <img src={img.src} alt={img.caption || ""} className="gal__slot-img" />
+        <img src={img.src} alt={img.caption || ""} className="gal__slot-img" loading="lazy" decoding="async" />
         <div className="gal__slot-shimmer" />
         {img.caption && <div className="gal__slot-caption">{img.caption}</div>}
         <span className="gal__corner gal__corner--tl" />
@@ -197,7 +207,7 @@ function GallerySection({
           <span className="gal__feat-corner gal__feat-corner--tr" />
           <span className="gal__feat-corner gal__feat-corner--bl" />
           <span className="gal__feat-corner gal__feat-corner--br" />
-          <img src={featured.src} alt={featured.caption || title} className="gal__featured-img" />
+          <img src={featured.src} alt={featured.caption || title} className="gal__featured-img" loading="lazy" decoding="async" />
           <div className="gal__featured-overlay">
             <div className="gal__featured-overlay-inner">
               {featured.caption && <p className="gal__featured-caption">{featured.caption}</p>}

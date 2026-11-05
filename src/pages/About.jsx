@@ -142,9 +142,13 @@ export default function About() {
             <div className="about__organiser-glow" />
             <div className="about__organiser-logo">
               <img
-                src="/favicon.png"
+                src="/favicon.webp"
                 alt="PMT Logo"
                 className="about__organiser-img"
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => { e.target.style.display = "none"; }}
               />
             </div>

@@ -136,7 +136,7 @@ export default function Footer({ onNavigate }) {
         {/* Brand */}
         <div className="footer__brand">
           <div className="footer__brand-logo">
-            <img src="/favicon.png" alt="PMT Logo" className="footer__brand-logo-img" />
+            <img src="/favicon.webp" alt="PMT Logo" className="footer__brand-logo-img" width="64" height="64" loading="lazy" decoding="async" />
           </div>
           <h2 className="footer__brand-name">
             <span className="footer__brand-pmt">PMT</span>

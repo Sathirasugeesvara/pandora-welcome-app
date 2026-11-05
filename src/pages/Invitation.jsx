@@ -171,7 +171,7 @@ export default function Invitation() {
           <div className="inv__logo-wrap">
             <div className="inv__logo-ring inv__logo-ring--1" />
             <div className="inv__logo-ring inv__logo-ring--2" />
-            <img src="/favicon.png" alt="PMT" className="inv__logo-img"
+            <img src="/favicon.webp" alt="PMT" className="inv__logo-img" width="64" height="64" decoding="async"
               onError={(e) => { e.target.style.display = "none"; }} />
           </div>
 
@@ -282,7 +282,7 @@ export default function Invitation() {
                 <div className="inv__seal-ring inv__seal-ring--1" />
                 <div className="inv__seal-ring inv__seal-ring--2" />
                 <div className="inv__seal-ring inv__seal-ring--3" />
-                <img src="/favicon.png" alt="PMT" className="inv__seal-img"
+                <img src="/favicon.webp" alt="PMT" className="inv__seal-img" width="64" height="64" decoding="async"
                   onError={(e) => { e.target.style.display = "none"; }} />
                 <div className="inv__seal-glow" />
               </div>
@@ -307,6 +307,8 @@ export default function Invitation() {
       <img
         src={photoUrl}
         alt={result.name}
+        loading="lazy"
+        decoding="async"
         className="inv__portrait-img"
       />
       <div className="inv__portrait-overlay" />

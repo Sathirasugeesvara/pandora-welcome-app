@@ -2,12 +2,12 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import "./GameBase.css";
 
 const CLANS = [
-  { id:"omaticaya",  name:"Omaticaya",        color:"#39ff14", img:"/clans/omaticaya.png",         emoji:"🌿" },
-  { id:"metkayina",  name:"Metkayina",         color:"#00e5ff", img:"/clans/metkayina.png",         emoji:"🌊" },
-  { id:"ash",        name:"Ash Clan",           color:"#ff6b35", img:"/clans/ash-clan.png",          emoji:"🔥" },
-  { id:"skyriders",  name:"Sky Riders",         color:"#a78bfa", img:"/clans/sky-riders.png",       emoji:"⚡" },
-  { id:"tulkun",     name:"Tulkun Guardians",   color:"#22d3ee", img:"/clans/tulkun-guardians.png", emoji:"🐋" },
-  { id:"warriors",   name:"Pandora Warriors",   color:"#c084fc", img:"/clans/pandora-warriors.png", emoji:"💜" },
+  { id:"omaticaya",  name:"Omaticaya",        color:"#39ff14", img:"/clans/omaticaya.webp",         emoji:"🌿" },
+  { id:"metkayina",  name:"Metkayina",         color:"#00e5ff", img:"/clans/metkayina.webp",         emoji:"🌊" },
+  { id:"ash",        name:"Ash Clan",           color:"#ff6b35", img:"/clans/ash-clan.webp",          emoji:"🔥" },
+  { id:"skyriders",  name:"Sky Riders",         color:"#a78bfa", img:"/clans/sky-riders.webp",       emoji:"⚡" },
+  { id:"tulkun",     name:"Tulkun Guardians",   color:"#22d3ee", img:"/clans/tulkun-guardians.webp", emoji:"🐋" },
+  { id:"warriors",   name:"Pandora Warriors",   color:"#c084fc", img:"/clans/pandora-warriors.webp", emoji:"💜" },
 ];
 
 export default function TapClan() {
@@ -83,7 +83,7 @@ export default function TapClan() {
             <div className="gb__clan-preview">
               {CLANS.map(c => (
                 <div key={c.id} className="gb__clan-prev-item" style={{"--c": c.color}}>
-                  <img src={c.img} alt={c.name} className="gb__clan-prev-img" onError={e=>e.target.textContent=c.emoji} />
+                  <img src={c.img} alt={c.name} className="gb__clan-prev-img" loading="lazy" decoding="async" onError={e=>e.target.textContent=c.emoji} />
                 </div>
               ))}
             </div>
@@ -119,7 +119,7 @@ export default function TapClan() {
                   onClick={() => handleTap(clan)}
                   disabled={!!flash}
                 >
-                  <img src={clan.img} alt={clan.name} className="gb__clan-img"
+                  <img src={clan.img} alt={clan.name} className="gb__clan-img" loading="lazy" decoding="async"
                     onError={e => { e.target.style.display="none"; e.target.nextSibling.style.display="block"; }} />
                   <span className="gb__clan-emoji" style={{display:"none"}}>{clan.emoji}</span>
                   <span className="gb__clan-label">{clan.name}</span>

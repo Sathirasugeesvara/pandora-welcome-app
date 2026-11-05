@@ -6,12 +6,12 @@ const SHEET_CSV_URL =
   "https://docs.google.com/spreadsheets/d/1z8dWBB84dKLqcg8phkHKkTlAGIqQyD_5aqWnO5Q8xfs/export?format=csv";
 
 const CLAN_CONFIG = {
-  "Omaticaya":        { id: "omaticaya",  color: "#39ff14", colorDim: "rgba(57,255,20,0.10)",   colorGlow: "rgba(57,255,20,0.4)",   img: "/clans/omaticaya.png" },
-  "Metkayina":        { id: "metkayina",  color: "#00e5ff", colorDim: "rgba(0,229,255,0.10)",   colorGlow: "rgba(0,229,255,0.4)",   img: "/clans/metkayina.png" },
-  "Ash Clan":         { id: "ash",        color: "#ff6b35", colorDim: "rgba(255,107,53,0.10)",  colorGlow: "rgba(255,107,53,0.4)",  img: "/clans/ash-clan.png" },
-  "Sky Riders":       { id: "skyriders",  color: "#a78bfa", colorDim: "rgba(167,139,250,0.10)", colorGlow: "rgba(167,139,250,0.4)", img: "/clans/sky-riders.png" },
-  "Tulkun Guardians": { id: "tulkun",     color: "#22d3ee", colorDim: "rgba(34,211,238,0.10)",  colorGlow: "rgba(34,211,238,0.4)",  img: "/clans/tulkun-guardians.png" },
-  "Pandora Warriors": { id: "warriors",   color: "#c084fc", colorDim: "rgba(192,132,252,0.10)", colorGlow: "rgba(192,132,252,0.4)", img: "/clans/pandora-warriors.png" },
+  "Omaticaya":        { id: "omaticaya",  color: "#39ff14", colorDim: "rgba(57,255,20,0.10)",   colorGlow: "rgba(57,255,20,0.4)",   img: "/clans/omaticaya.webp" },
+  "Metkayina":        { id: "metkayina",  color: "#00e5ff", colorDim: "rgba(0,229,255,0.10)",   colorGlow: "rgba(0,229,255,0.4)",   img: "/clans/metkayina.webp" },
+  "Ash Clan":         { id: "ash",        color: "#ff6b35", colorDim: "rgba(255,107,53,0.10)",  colorGlow: "rgba(255,107,53,0.4)",  img: "/clans/ash-clan.webp" },
+  "Sky Riders":       { id: "skyriders",  color: "#a78bfa", colorDim: "rgba(167,139,250,0.10)", colorGlow: "rgba(167,139,250,0.4)", img: "/clans/sky-riders.webp" },
+  "Tulkun Guardians": { id: "tulkun",     color: "#22d3ee", colorDim: "rgba(34,211,238,0.10)",  colorGlow: "rgba(34,211,238,0.4)",  img: "/clans/tulkun-guardians.webp" },
+  "Pandora Warriors": { id: "warriors",   color: "#c084fc", colorDim: "rgba(192,132,252,0.10)", colorGlow: "rgba(192,132,252,0.4)", img: "/clans/pandora-warriors.webp" },
 };
 
 const CLAN_MOTTOS = {
@@ -157,6 +157,8 @@ export default function Leaderboard() {
                       src={clan.img}
                       alt={clan.name}
                       className="lb__row-img"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => { e.target.style.display = "none"; }}
                     />
                   </div>
@@ -205,6 +207,8 @@ function PodiumSlot({ clan, rank }) {
           src={clan.img}
           alt={clan.name}
           className="lb__podium-img"
+          loading="lazy"
+          decoding="async"
           onError={(e) => { e.target.style.display = "none"; }}
         />
       </div>

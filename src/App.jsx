@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import BeforeLeave from "./components/BeforeLeave";
 import Footer from "./components/Footer";
@@ -17,8 +17,43 @@ import SceneSort from "./pages/SceneSort";
 import "./App.css";
 
 function HomePage({ onNavigate }) {
+  const [shouldLoadHeroVideo, setShouldLoadHeroVideo] = useState(false);
+
+  useEffect(() => {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const updateVideoPreference = () => {
+      const slowConnection = connection?.saveData || /(^|-)2g|3g/.test(connection?.effectiveType || "");
+      setShouldLoadHeroVideo(!slowConnection && !reducedMotion.matches);
+    };
+
+    updateVideoPreference();
+    connection?.addEventListener?.("change", updateVideoPreference);
+    reducedMotion.addEventListener?.("change", updateVideoPreference);
+
+    return () => {
+      connection?.removeEventListener?.("change", updateVideoPreference);
+      reducedMotion.removeEventListener?.("change", updateVideoPreference);
+    };
+  }, []);
+
   return (
     <section id="home" className="hero">
+      {shouldLoadHeroVideo && (
+        <video
+          className="hero__video"
+          src="/videoes/hero.mp4"
+          poster="/videoes/hero.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          tabIndex={-1}
+        />
+      )}
       <div className="hero__bg-overlay" />
       <div className="hero__content">
         <p className="hero__eyebrow">University of Sri Jayewardenepura · Faculty of Applied Sciences</p>
